@@ -1,0 +1,22 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+	<input v-model="syncData">
+	<br>
+	<!-- <p>{{ syncData }}</p> -->
+	<child v-bind:input-value="syncData"></child>
+	<!-- <element value="sync-data"></element> -->
+</div>
+
+<script>
+	Vue.component('child', {
+		props: ['inputValue'],
+		template: '<p>{{ inputValue }}</p>'
+	})
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			syncData: "abc"
+		}
+	})
+</script>
